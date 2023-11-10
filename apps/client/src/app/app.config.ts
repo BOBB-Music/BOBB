@@ -1,8 +1,14 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+	provideRouter,
+	withEnabledBlockingInitialNavigation,
+} from '@angular/router';
 import { appRoutes } from './app.routes';
 
-import { provideHttpClient } from '@angular/common/http';
+import {
+	provideHttpClient,
+	withInterceptorsFromDi,
+} from '@angular/common/http';
 import { provideTransloco } from '@ngneat/transloco';
 import { TranslocoHttpLoader } from '../services/transloco-http-loader.service';
 
@@ -16,7 +22,7 @@ import { RoomService } from './rooms/services';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideHttpClient(),
+		provideHttpClient(withInterceptorsFromDi()),
 		provideTransloco({
 			config: {
 				availableLangs: ['en', 'nl'],
@@ -39,7 +45,7 @@ export const appConfig: ApplicationConfig = {
 		Apollo,
 
 		// routes
-		provideRouter(appRoutes),
+		provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
 
 		// sdk
 		Api,
