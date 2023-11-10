@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      target: base
+    tty: true
+    command: yarn api:docker:start
+    env_file: ./.env
+    ports:
+      - '$EXPOSED_API_PORT:3000'
+      - '$EXPOSED_API_DEBUGGING_PORT:9229'
+    volumes:
+      - ./:/opt/app
+    depends_on:
+      - db
+  client:
+    build:
+      context: .
+      target: base
+    tty: true
+    command: yarn client:docker:start
+    env_file: ./.env
+    ports:
+      - '$EXPOSED_CLIENT_PORT:4200'
+    volumes:
+      - ./:/opt/app
+  db:
+    image: postgres:12.2
+    environment:
+      - 'POSTGRES_USER=$POSTGRES_USER'
+      - 'POSTGRES_PASSWORD=$POSTGRES_PASSWORD'
+      - 'POSTGRES_DB=$POSTGRES_DB'
+    ports:
+      - '$EXPOSED_DATABASE_PORT:5432'

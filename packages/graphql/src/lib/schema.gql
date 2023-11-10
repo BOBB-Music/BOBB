@@ -1,0 +1,82 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RoomCountAggregate {
+  id: Int!
+  _all: Int!
+}
+
+type RoomAvgAggregate {
+  id: Float
+}
+
+type RoomSumAggregate {
+  id: Int
+}
+
+type RoomMinAggregate {
+  id: Int
+}
+
+type RoomMaxAggregate {
+  id: Int
+}
+
+type Room {
+  id: ID!
+}
+
+type Query {
+  findManyRooms(where: RoomWhereInput, orderBy: [RoomOrderByWithRelationInput!], cursor: RoomWhereUniqueInput, take: Int, skip: Int, distinct: [RoomScalarFieldEnum!]): [Room!]!
+  getRoomById(id: Int!): Room!
+}
+
+input RoomWhereInput {
+  AND: [RoomWhereInput!]
+  OR: [RoomWhereInput!]
+  NOT: [RoomWhereInput!]
+  id: IntFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input RoomOrderByWithRelationInput {
+  id: SortOrder
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input RoomWhereUniqueInput {
+  id: Int
+  AND: [RoomWhereInput!]
+  OR: [RoomWhereInput!]
+  NOT: [RoomWhereInput!]
+}
+
+enum RoomScalarFieldEnum {
+  id
+}

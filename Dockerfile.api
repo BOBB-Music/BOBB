@@ -1,0 +1,36 @@
+FROM node:20 as base
+
+WORKDIR /opt/app
+EXPOSE 3000
+
+RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64
+RUN chmod +x /usr/local/bin/dumb-init
+
+ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
+
+FROM base as build
+
+COPY package.json yarn.lock ./
+# COPY patches ./patches
+
+RUN yarn install --frozen-lockfile
+
+COPY . .
+
+RUN yarn api:build
+
+
+FROM base as production
+
+ENV NODE_ENV=production
+
+COPY --from=BUILD /opt/app/dist/projects/api /opt/app/dist/projects/api
+COPY --from=BUILD /opt/app/prisma /opt/app/prisma
+COPY --from=BUILD /opt/app/node_modules /opt/app/node_modules
+COPY --from=BUILD /opt/app/package.json /opt/app/package.json
+
+COPY .docker/healthcheck.sh /healthcheck.sh
+RUN chmod +x /healthcheck.sh
+# HEALTHCHECK --interval=30s --timeout=3s --start-period=30s CMD /healthcheck.sh
+
+CMD ["yarn", "api:start:prod"]

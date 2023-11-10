@@ -7,14 +7,15 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/projects/client",
         "index": "projects/client/src/index.html",
-        "main": "projects/client/src/main.ts",
+        "browser": "projects/client/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "projects/client/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
         "assets": [
           "projects/client/src/favicon.ico",
           "projects/client/src/assets"
@@ -39,35 +40,33 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "sourceMap": true
         }
       },
       "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "host": "0.0.0.0",
+        "disableHostCheck": true
+      },
       "configurations": {
         "production": {
-          "browserTarget": "client:build:production"
+          "buildTarget": "client:build:production"
         },
         "development": {
-          "browserTarget": "client:build:development"
+          "buildTarget": "client:build:development"
         }
       },
-      "defaultConfiguration": "development",
-      "options": {
-        "proxyConfig": "projects/client/proxy.conf.json"
-      }
+      "defaultConfiguration": "development"
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "client:build"
+        "buildTarget": "client:build"
       }
     },
     "lint": {
@@ -84,14 +83,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "projects/client/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "projects/client/jest.config.ts"
       }
     }
   }

@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { defaultImports } from '../utils';
 
 @Component({
-  standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'bobb-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+	standalone: true,
+	imports: [...defaultImports, RouterModule],
+	selector: 'bobb-root',
+	templateUrl: './app.component.html',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'client';
-}
+export class AppComponent {}

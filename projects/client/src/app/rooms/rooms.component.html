@@ -1,0 +1,17 @@
+<div
+	class="h-screen w-screen flex flex-col justify-center items-center gap-6"
+	*subscribe="rooms$ as rooms"
+>
+	@if (rooms.isLoading) { Loading... } @if (rooms.isError) { Error...
+	<pre>
+            {{ rooms.failureReason | json }}
+        </pre
+	>
+	} @if(rooms.isSuccess) {
+	<ul>
+		@for(room of rooms.data; track room.id) {
+		<li>{{ room.id }}</li>
+		}
+	</ul>
+	}
+</div>
