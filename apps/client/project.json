@@ -17,7 +17,7 @@
         "tsConfig": "apps/client/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-					"apps/dashboard/src/404.html",
+					"apps/client/src/404.html",
           "apps/client/src/favicon.ico",
           "apps/client/src/assets"
         ],
