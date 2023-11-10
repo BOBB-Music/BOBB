@@ -17,7 +17,6 @@
 		"api:docker:start": "yarn docker:start api",
 		"api:start:prod": "yarn start:prod ./dist/projects/api/main",
 		"client:start": "yarn serve client",
-		"preclient:build": "yarn codegen",
 		"client:build": "yarn build client",
 		"client:test": "yarn test client",
 		"client:docker:start": "yarn docker:start client",
