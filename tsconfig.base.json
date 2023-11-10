@@ -17,8 +17,8 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"paths": {
-			"@bobb/api/*": ["projects/api/src/*"],
-			"@bobb/client/*": ["projects/client/src/*"],
+			"@bobb/api/*": ["apps/api/src/*"],
+			"@bobb/client/*": ["apps/client/src/*"],
 			"@bobb/graphql": ["packages/graphql/src/index.ts"],
 			"@bobb/prisma": ["packages/prisma/src/index.ts"]
 		}

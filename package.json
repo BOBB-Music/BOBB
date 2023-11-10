@@ -15,7 +15,7 @@
 		"api:build": "yarn build api",
 		"api:test": "yarn test api",
 		"api:docker:start": "yarn docker:start api",
-		"api:start:prod": "yarn start:prod ./dist/projects/api/main",
+		"api:start:prod": "yarn start:prod ./dist/apps/api/main",
 		"client:start": "yarn serve client",
 		"client:build": "yarn build client",
 		"client:test": "yarn test client",

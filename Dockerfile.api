@@ -24,7 +24,7 @@ FROM base as production
 
 ENV NODE_ENV=production
 
-COPY --from=BUILD /opt/app/dist/projects/api /opt/app/dist/projects/api
+COPY --from=BUILD /opt/app/dist/apps/api /opt/app/dist/apps/api
 COPY --from=BUILD /opt/app/prisma /opt/app/prisma
 COPY --from=BUILD /opt/app/node_modules /opt/app/node_modules
 COPY --from=BUILD /opt/app/package.json /opt/app/package.json

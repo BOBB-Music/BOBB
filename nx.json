@@ -8,7 +8,7 @@
     "analytics": false
   },
   "workspaceLayout": {
-    "appsDir": "projects",
+    "appsDir": "apps",
     "libsDir": "packages"
   },
   "targetDefaults": {
