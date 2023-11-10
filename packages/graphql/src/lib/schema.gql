@@ -80,3 +80,7 @@ input RoomWhereUniqueInput {
 enum RoomScalarFieldEnum {
   id
 }
+
+type Mutation {
+  createRoom: Room!
+}

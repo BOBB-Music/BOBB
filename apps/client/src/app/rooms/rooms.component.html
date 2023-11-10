@@ -4,14 +4,25 @@
 >
 	@if (rooms.isLoading) { Loading... } @if (rooms.isError) { Error...
 	<pre>
-            {{ rooms.failureReason | json }}
+            {{ rooms.error | json }}
         </pre
 	>
 	} @if(rooms.isSuccess) {
 	<ul>
-		@for(room of rooms.data; track room.id) {
+		@for(room of rooms.data.findManyRooms; track room.id) {
 		<li>{{ room.id }}</li>
 		}
 	</ul>
 	}
+
+	<button
+		class="rounded border border-neutral-500 text-white py-2 px-4 transition-colors hover:bg-neutral-500 hover:text-neutral-900"
+		(click)="createRoom()"
+	>
+		Create room
+	</button>
+
+	<ng-container *ngIf="createRoomResult$ | async as createRoom">
+		@if(createRoom.isLoading) { Creating room... }
+	</ng-container>
 </div>

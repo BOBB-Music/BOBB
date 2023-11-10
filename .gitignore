@@ -45,3 +45,4 @@ packages/prisma/src/lib/graphql
 .env
 
 ./util/operations-from-schema.generator.js
+util/operations-from-schema.generator.js

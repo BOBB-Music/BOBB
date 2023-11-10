@@ -9,5 +9,12 @@ import { RoomService } from './services';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsComponent {
-	rooms$ = inject(RoomService).findManyRooms().result$;
+	private _room = inject(RoomService);
+	rooms$ = this._room.getRooms().result$;
+	createRoom$ = this._room.createRoom();
+	createRoomResult$ = this.createRoom$?.result$;
+
+	createRoom() {
+		this.createRoom$?.mutate();
+	}
 }

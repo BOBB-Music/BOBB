@@ -10,14 +10,13 @@ import {
 	withInterceptorsFromDi,
 } from '@angular/common/http';
 import { provideTransloco } from '@ngneat/transloco';
-import { TranslocoHttpLoader } from '../services/transloco-http-loader.service';
+import { TranslocoHttpLoader } from '../services';
 
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { environment } from '@bobb/client/environments';
 import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
-import { Api } from '@bobb/graphql';
 import { RoomService } from './rooms/services';
 
 export const appConfig: ApplicationConfig = {
@@ -46,9 +45,6 @@ export const appConfig: ApplicationConfig = {
 
 		// routes
 		provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
-
-		// sdk
-		Api,
 
 		//services
 		RoomService,

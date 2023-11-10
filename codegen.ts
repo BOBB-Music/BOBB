@@ -15,8 +15,7 @@ const config: CodegenConfig = {
 				'typescript-operations',
 				{
 					'typescript-apollo-angular': {
-						sdkClass: true,
-						serviceName: 'Api',
+						sdkClass: false,
 						addExplicitOverride: true,
 					},
 				},
