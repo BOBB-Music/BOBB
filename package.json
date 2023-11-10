@@ -2,6 +2,7 @@
 	"name": "@bobb/source",
 	"version": "0.0.0",
 	"license": "MIT",
+	"packageManager": "yarn@1.22.19",
 	"scripts": {
 		"prebuild": "yarn prisma:generate",
 		"build": "yarn nx build",
