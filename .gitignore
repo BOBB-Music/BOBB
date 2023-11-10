@@ -43,3 +43,5 @@ Thumbs.db
 
 packages/prisma/src/lib/graphql
 .env
+
+./util/operations-from-schema.generator.js

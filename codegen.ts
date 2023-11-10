@@ -5,7 +5,7 @@ const config: CodegenConfig = {
 	schema: 'http://api:3000/graphql',
 	documents: {
 		'http://api:3000/graphql': {
-			loader: './operations-from-schema.generator.js',
+			loader: './util/operations-from-schema.generator.js',
 		},
 	},
 	generates: {

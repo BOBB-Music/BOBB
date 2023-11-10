@@ -21,7 +21,7 @@
 		"client:build": "yarn build client",
 		"client:test": "yarn test client",
 		"client:docker:start": "yarn docker:start client",
-		"preclient:codegen": "yarn tsc --skipLibCheck ./operations-from-schema.generator.ts",
+		"preclient:codegen": "yarn tsc --skipLibCheck ./util/operations-from-schema.generator.ts",
 		"client:codegen": "graphql-codegen --config codegen.ts",
 		"prisma:pull": "yarn prisma db pull",
 		"prisma:push": "yarn prisma db push",
