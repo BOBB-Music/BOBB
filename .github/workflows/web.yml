@@ -3,6 +3,10 @@ name: Build & Deploy Client docker image
 on:
     push:
         branches: ['main']
+        paths:
+            - 'packages/**'
+            - 'apps/client/**'
+            - 'apps/client-e2e/**'
     workflow_dispatch:
 
 env:

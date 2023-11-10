@@ -3,6 +3,10 @@ name: Build & Deploy Api docker image
 on:
     push:
         branches: ['main']
+        paths:
+            - 'packages/**'
+            - 'apps/api/**'
+            - 'apps/api-e2e/**'
     workflow_dispatch:
 
 env:
